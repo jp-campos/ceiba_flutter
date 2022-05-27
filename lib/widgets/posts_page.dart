@@ -6,8 +6,10 @@ import 'package:prueba_ceiba_flutter/infraestructure/post_api.dart';
 import 'package:prueba_ceiba_flutter/widgets/user_card.dart';
 
 class PostsPage extends StatefulWidget {
-  const PostsPage({required this.user, Key? key}) : super(key: key);
+  const PostsPage({required this.user, this.usecase, Key? key})
+      : super(key: key);
   final User user;
+  final PostUsecase? usecase;
   @override
   State<PostsPage> createState() => _PostsPageState();
 }
@@ -17,7 +19,7 @@ class _PostsPageState extends State<PostsPage> {
   late PostUsecase usecase;
   @override
   void initState() {
-    usecase = PostUsecase(PostApi());
+    usecase = widget.usecase ?? PostUsecase(PostApi());
     posts = usecase.listPostsByUser(widget.user.id);
     super.initState();
   }

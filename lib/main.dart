@@ -17,6 +17,7 @@ class CeibaTestFlutterApp extends StatelessWidget {
       title: 'Ceiba test',
       theme: themeData,
       home: HomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

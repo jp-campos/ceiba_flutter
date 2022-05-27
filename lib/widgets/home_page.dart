@@ -8,8 +8,8 @@ import 'package:prueba_ceiba_flutter/widgets/search_bar.dart';
 import 'package:prueba_ceiba_flutter/widgets/user_card.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
-
+  HomePage({Key? key, this.usecase}) : super(key: key);
+  final UserUsecase? usecase;
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    _usecase = UserUsecase(UserApi(), UserCache());
+    _usecase = widget.usecase ?? UserUsecase(UserApi(), UserCache());
 
     users = _usecase.listUsers();
     super.initState();
